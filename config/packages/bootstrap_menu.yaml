@@ -1,0 +1,14 @@
+bootstrap_menu:
+    menus:
+        main:
+            items:
+                plaid:
+                    label: 'Menu'
+                    items:
+                        room:
+                            label: 'Room'
+                            route: 'plaid'
+                        region:
+                            label: 'Region'
+                            route: 'plaid'
+     
