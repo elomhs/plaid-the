@@ -5,10 +5,17 @@ bootstrap_menu:
                 plaid:
                     label: 'Menu'
                     items:
+                        accueil:
+                            label: 'Accueil'
+                            route: 'plaid'
                         room:
-                            label: 'Room'
-                            route: 'plaid'
+                            label: 'Rooms'
+                            route: 'room'
                         region:
-                            label: 'Region'
-                            route: 'plaid'
+                            label: 'Regions'
+                            route: 'region'
+                        owner:
+                            label: 'Owners'
+                            route: 'owner'
+
      
