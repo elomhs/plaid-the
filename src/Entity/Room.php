@@ -57,11 +57,11 @@ class Room
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Region", inversedBy="rooms")
      */
-    private $relation;
+    private $regions;
 
     public function __construct()
     {
-        $this->relation = new ArrayCollection();
+        $this->regions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -156,24 +156,24 @@ class Room
     /**
      * @return Collection|Region[]
      */
-    public function getRelation(): Collection
+    public function getRegions(): Collection
     {
-        return $this->relation;
+        return $this->regions;
     }
 
-    public function addRelation(Region $relation): self
+    public function addRegion(Region $region): self
     {
-        if (!$this->relation->contains($relation)) {
-            $this->relation[] = $relation;
+        if (!$this->regions->contains($region)) {
+            $this->regions[] = $region;
         }
 
         return $this;
     }
 
-    public function removeRelation(Region $relation): self
+    public function removeRegion(Region $region): self
     {
-        if ($this->relation->contains($relation)) {
-            $this->relation->removeElement($relation);
+        if ($this->regions->contains($region)) {
+            $this->regions->removeElement($region);
         }
 
         return $this;

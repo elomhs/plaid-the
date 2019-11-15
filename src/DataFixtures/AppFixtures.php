@@ -24,11 +24,11 @@ class AppFixtures extends Fixture
         $region->setPresentation("La région française capitale");
         $manager->persist($region);
         
-        $manager->flush();
+        //$manager->flush();
         // Une fois l'instance de Region sauvée en base de données,
         // elle dispose d'un identifiant généré par Doctrine, et peut
         // donc être sauvegardée comme future référence.
-        $this->addReference(self::IDF_REGION_REFERENCE, $region);
+        //$this->addReference(self::IDF_REGION_REFERENCE, $region);
         
         $owner = new Owner();
         $owner->setFirstname("Roger");
@@ -37,14 +37,18 @@ class AppFixtures extends Fixture
         $owner->setCountry("France");
         $manager->persist($owner);
         
-        $manager->flush();
+        //$manager->flush();
         
         
         $room = new Room();
         $room->setSummary("Beau poulailler ancien à Évry");
         $room->setDescription("très joli espace sur paille");
         $room->addRegion($region);
-        $room->addOwner($owner);
+        $room->setOwner($owner);
+        $room->setCapacity(2);
+        $room->setPrice(2);
+        $room->setSuperficy(2);
+        $room->setAddress(2);
         // On peut plutôt faire une référence explicite à la référence
         // enregistrée précédamment, ce qui permet d'éviter de se
         // tromper d'instance de Region :
