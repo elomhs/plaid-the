@@ -8,13 +8,12 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
+<div class="container">
+    <h1> Voici les {{ nbrooms }} chambres disponibles </h1>
     <ul>
-        <li>Your controller at <code><a href="{{ '/home/elo/Documents/proj-agvoy/agvoy-app-03/src/Controller/RoomController.php'|file_link(0) }}">src/Controller/RoomController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/elo/Documents/proj-agvoy/agvoy-app-03/templates/room/index.html.twig'|file_link(0) }}">templates/room/index.html.twig</a></code></li>
+        {% for room in rooms %}
+            <li> {{ room.summary }}</li>
+        {% endfor %}
     </ul>
 </div>
 {% endblock %}
