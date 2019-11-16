@@ -17,4 +17,11 @@ class PlaidController extends AbstractController
             'salut' => "Salut tout le monde",
         ]);
     }
+    /**
+     * @Route("/", name="origine")
+     */
+    public function rene()
+    {
+        return $this->redirectToRoute("plaid");
+    }
 }

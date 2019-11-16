@@ -10,10 +10,10 @@ bootstrap_menu:
                             route: 'plaid'
                         room:
                             label: 'Rooms'
-                            route: 'room'
+                            route: 'listerooms'
                         region:
                             label: 'Regions'
-                            route: 'region'
+                            route: 'listeregions'
                         owner:
                             label: 'Owners'
                             route: 'owner'

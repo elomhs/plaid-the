@@ -1,20 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Region{% endblock %}
+{% block title %}Region index{% endblock %}
 
-{% block main %}
-{#<style>#}
-{#    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }#}
-{#    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }#}
-{#</style>#}
+{% block body %}
+    <h1>Region index</h1>
 
-<div class="container">
-    <h1> Voici les {{ nbregions }} régions disponibles </h1>
-    <ul>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Presentation</th>
+                <th>Country</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
         {% for region in regions %}
-            <li> {{ region.name }}</li>
+            <tr>
+                <td>{{ region.id }}</td>
+                <td>{{ region.name }}</td>
+                <td>{{ region.presentation }}</td>
+                <td>{{ region.country }}</td>
+                <td>
+                    <a href="{{ path('region_show', {'id': region.id}) }}">show</a>
+                    <a href="{{ path('region_edit', {'id': region.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
         {% endfor %}
-    </ul>
-</div>
+        </tbody>
+    </table>
 
+    <a href="{{ path('region_new') }}">Create new</a>
 {% endblock %}
