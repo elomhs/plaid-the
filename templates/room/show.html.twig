@@ -8,10 +8,6 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ room.id }}</td>
-            </tr>
-            <tr>
                 <th>Summary</th>
                 <td>{{ room.summary }}</td>
             </tr>
@@ -21,23 +17,28 @@
             </tr>
             <tr>
                 <th>Capacity</th>
-                <td>{{ room.capacity }}</td>
+                <td>{{ room.capacity }} personnes </td>
             </tr>
             <tr>
                 <th>Superficy</th>
-                <td>{{ room.superficy }}</td>
+                <td>{{ room.superficy }} m²</td>
             </tr>
             <tr>
                 <th>Price</th>
-                <td>{{ room.price }}</td>
+                <td>{{ room.price }} €</td>
             </tr>
             <tr>
                 <th>Address</th>
                 <td>{{ room.address }}</td>
             </tr>
             <tr>
-                <th>Image</th>
-                <td>{{ room.Image }}</td>
+                <img src="{{ asset('images/thumbs/'~room.image) }}" alt="" width="400"/>
+            </tr>
+            <tr>
+                <th>Région</th>
+                    {% for region in room.regions %}
+                        <td>{{ region.name }}</td>
+                    {% endfor %}
             </tr>
 
         </tbody>

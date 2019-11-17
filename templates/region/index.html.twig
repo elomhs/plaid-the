@@ -2,38 +2,87 @@
 
 {% block title %}Region index{% endblock %}
 
-{% block body %}
-    <h1>Region index</h1>
+{#{% block body %}#}
+{#    <h1>Region index</h1>#}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Presentation</th>
-                <th>Country</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for region in regions %}
-            <tr>
-                <td>{{ region.id }}</td>
-                <td>{{ region.name }}</td>
-                <td>{{ region.presentation }}</td>
-                <td>{{ region.country }}</td>
-                <td>
-                    <a href="{{ path('region_show', {'id': region.id}) }}">show</a>
-                    <a href="{{ path('region_edit', {'id': region.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+{#    <table class="table">#}
+{#        <thead>#}
+{#            <tr>#}
+{#                <th>Id</th>#}
+{#                <th>Name</th>#}
+{#                <th>Presentation</th>#}
+{#                <th>Country</th>#}
+{#                <th>actions</th>#}
+{#            </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#        {% for region in regions %}#}
+{#            <tr>#}
+{#                <td>{{ region.id }}</td>#}
+{#                <td>{{ region.name }}</td>#}
+{#                <td>{{ region.presentation }}</td>#}
+{#                <td>{{ region.country }}</td>#}
+{#                <td>#}
+{#                    <a href="{{ path('region_show', {'id': region.id}) }}">show</a>#}
+{#                    <a href="{{ path('region_edit', {'id': region.id}) }}">edit</a>#}
+{#                </td>#}
+{#            </tr>#}
+{#        {% else %}#}
+{#            <tr>#}
+{#                <td colspan="5">no records found</td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+{#        </tbody>#}
+{#    </table>#}
 
-    <a href="{{ path('region_new') }}">Create new</a>
+{#    <a href="{{ path('region_new') }}">Create new</a>#}
+{#{% endblock %}#}
+{% block main %}
+    <!-- Wrapper -->
+			<div id="wrapper" class="container">
+
+
+				<!-- Header -->
+					<br>
+					<header id="header">
+						<h1 style="font-size: 50px"> Venez visitez les régions françaises </h1>
+					</header>
+
+				<!-- Main -->
+					<section id="main" class="row justify-content-center">
+
+
+						<!-- Thumbnails -->
+							<section class="thumbnails " >
+
+								<div style="width: 400px">
+									{% for region in regions %}
+									<a href="{{ path('region_show', {id:region.id}) }}">
+										<br>
+										<h1>{{ region.name }}</h1>
+										<img src="{{ asset('images/thumbs/'~region.image) }}" alt="" />
+										<h3>{{ region.presentation }}</h3>
+									</a>
+									{% endfor %}
+								</div>
+
+							</section>
+
+					</section>
+
+
+				<!-- Footer -->
+					<footer id="footer">
+						<p>&copy; Untitled. All rights reserved. Design: <a href="http://templated.co">TEMPLATED</a>. Demo Images: <a href="http://unsplash.com">Unsplash</a>.</p>
+					</footer>
+
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.poptrox.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/main.js"></script>
+
 {% endblock %}

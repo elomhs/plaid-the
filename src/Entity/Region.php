@@ -34,9 +34,14 @@ class Region
     private $country;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Room", mappedBy="relation")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Room", mappedBy="regions")
      */
     private $rooms;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image;
 
     public function __construct()
     {
@@ -108,6 +113,18 @@ class Region
             $this->rooms->removeElement($room);
             $room->removeRelation($this);
         }
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
