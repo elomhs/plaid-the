@@ -89,6 +89,18 @@ class AppFixtures extends Fixture
         $manager->persist($room);
 
         $room = new Room();
+        $room->setSummary("U2");
+        $room->setDescription("Un peu bruyant le vendredi, le mardi et parfois le mercredi aussi");
+        $room->addRegion($region1);
+        $room->setOwner($owner);
+        $room->setCapacity(2);
+        $room->setPrice(25);
+        $room->setSuperficy(20);
+        $room->setAddress("6 rue Charles Fourier");
+        $room->setImage("evry2.jpg");
+        $manager->persist($room);
+
+        $room = new Room();
         $room->setSummary("Mat typiquement provençal");
         $room->setDescription("La piscine et le terrain de pétanque rendront vos soirées innoubliables");
         $room->addRegion($region2);
