@@ -148,6 +148,8 @@ class AppFixtures extends Fixture
         $room->setImage("corse.jpg");
         $manager->persist($room);
 
+
+
         // On peut plutôt faire une référence explicite à la référence
         // enregistrée précédamment, ce qui permet d'éviter de se
         // tromper d'instance de Region :
