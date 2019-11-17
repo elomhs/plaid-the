@@ -22,6 +22,6 @@ class PlaidController extends AbstractController
      */
     public function rene()
     {
-        return $this->redirectToRoute("plaid");
+        return $this->redirectToRoute("accueil");
     }
 }

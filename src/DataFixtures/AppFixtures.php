@@ -103,7 +103,7 @@ class AppFixtures extends Fixture
         $room = new Room();
         $room->setSummary("Mat typiquement provençal");
         $room->setDescription("La piscine et le terrain de pétanque rendront vos soirées innoubliables");
-        $room->addRegion($region2);
+        $room->addRegion($region4);
         $room->setOwner($owner);
         $room->setCapacity(5);
         $room->setPrice(1000);
@@ -115,7 +115,7 @@ class AppFixtures extends Fixture
         $room = new Room();
         $room->setSummary("Sublime phare breton");
         $room->setDescription("Littéralement à deux pas de l'océan");
-        $room->addRegion($region3);
+        $room->addRegion($region5);
         $room->setOwner($owner);
         $room->setCapacity(2);
         $room->setPrice(50);
@@ -127,7 +127,7 @@ class AppFixtures extends Fixture
         $room = new Room();
         $room->setSummary("Maison familiale chaleureuse");
         $room->setDescription("Les cigognes sauront vous dépayser");
-        $room->addRegion($region4);
+        $room->addRegion($region3);
         $room->setOwner($owner);
         $room->setCapacity(5);
         $room->setPrice(200);
@@ -139,7 +139,7 @@ class AppFixtures extends Fixture
         $room = new Room();
         $room->setSummary("Villa au plein coeur des montagnes");
         $room->setDescription("La vue est dégagée");
-        $room->addRegion($region5);
+        $room->addRegion($region2);
         $room->setOwner($owner);
         $room->setCapacity(10);
         $room->setPrice(2000);
