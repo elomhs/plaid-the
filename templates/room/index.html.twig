@@ -41,7 +41,7 @@
 									{% for room in rooms %}
 									<a href="{{ path('room_show', {id:room.id}) }}">
 										<img src="{{ asset('images/thumbs/'~room.image) }}" alt="" />
-										<h3>{{ room.description }}</h3>
+										<h3 style="text-shadow: #1d2124">{{ room.description }}</h3>
 									</a>
 									{% endfor %}
 								</div>
