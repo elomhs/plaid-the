@@ -43,6 +43,11 @@ class Owner
      */
     private $relroom;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="roleOwner", cascade={"persist", "remove"})
+     */
+    private $role;
+
     public function __construct()
     {
         $this->relroom = new ArrayCollection();
@@ -128,6 +133,18 @@ class Owner
                 $relation->setOwner(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getRole(): ?User
+    {
+        return $this->role;
+    }
+
+    public function setRole(?User $role): self
+    {
+        $this->role = $role;
 
         return $this;
     }
