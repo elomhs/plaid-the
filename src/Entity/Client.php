@@ -31,6 +31,11 @@ class Client
      */
     private $comment;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User", cascade={"persist", "remove"})
+     */
+    private $role;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,6 +73,18 @@ class Client
     public function setComment(?string $comment): self
     {
         $this->comment = $comment;
+
+        return $this;
+    }
+
+    public function getRole(): ?User
+    {
+        return $this->role;
+    }
+
+    public function setRole(?User $role): self
+    {
+        $this->role = $role;
 
         return $this;
     }
