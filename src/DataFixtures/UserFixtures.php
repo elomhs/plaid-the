@@ -24,20 +24,20 @@ class UserFixtures extends Fixture
     }
     private function loadUsers(ObjectManager $manager)
     {
-        foreach ($this->getUserData() as [$email,$plainPassword,$role]) {
+        foreach ($this->getUserData() as [$userName,$plainPassword]) {
             $user = new User();
             $encodedPassword = $this->passwordEncoder->encodePassword($user, $plainPassword);
-            $user->setEmail($email);
+            $user->setUsername($userName);
             $user->setPassword($encodedPassword);
-            $user->addRole($role);
+//            $user->addRole($role);
             $manager->persist($user);
         }
     }
     
     private function getUserData()
     {
-        yield ['chris@localhost','chris','ROLE_USER'];
-        yield ['anna@localhost','anna','ROLE_ADMIN'];
+        yield ['chris','chris'];
+        yield ['anna','anna'];
         
     }
 }
