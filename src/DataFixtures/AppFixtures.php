@@ -148,6 +148,17 @@ class AppFixtures extends Fixture
         $room->setImage("corse.jpg");
         $manager->persist($room);
 
+        $room = new Room();
+        $room->setSummary("Villa au plein coeur des montagnes");
+        $room->setDescription("La vue est dégagée");
+        $room->addRegion($region2);
+        $room->setOwner($owner);
+        $room->setCapacity(10);
+        $room->setPrice(2000);
+        $room->setSuperficy(1000);
+        $room->setAddress("1 chemin des paturages");
+        $room->setImage("corse.jpg");
+        $manager->persist($room);
 
 
         // On peut plutôt faire une référence explicite à la référence

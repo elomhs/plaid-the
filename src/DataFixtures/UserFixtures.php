@@ -38,6 +38,7 @@ class UserFixtures extends Fixture
     {
         yield ['chris','chris','ROLE_OWNER'];
         yield ['anna','anna','ROLE_CLIENT'];
-        
+        yield ['micka','micka','ROLE_SUPER_ADMIN'];
+        yield ['elo','elo','ROLE_DOUBLE'];
     }
 }

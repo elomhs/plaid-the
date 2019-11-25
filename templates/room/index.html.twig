@@ -39,8 +39,11 @@
 							<section class="thumbnails " >
 
 								<div style="width: 400px">
-									<button class="btn">New</button>
-
+									{% if is_granted('ROLE_OWNER') or is_granted('ROLE_DOUBLE') or is_granted('ROLE_SUPER_ADMIN') %}
+									<a href="{{ path('room_new') }}">
+										<button class="btn">New</button>
+									</a>
+									{% endif %}
 									{% for room in rooms %}
 									<a href="{{ path('room_show', {id:room.id}) }}">
 										<img src="{{ asset('images/thumbs/'~room.image) }}" alt="" />

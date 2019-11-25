@@ -128,4 +128,9 @@ class Region
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return (string)$this->getId();
+    }
 }

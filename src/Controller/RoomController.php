@@ -32,6 +32,8 @@ class RoomController extends AbstractController
         ));
     }
 
+
+
     /**
      * @Route("/", name="room_index", methods={"GET"})
      */
@@ -99,6 +101,7 @@ class RoomController extends AbstractController
      */
     public function delete(Request $request, Room $room): Response
     {
+
         if ($this->isCsrfTokenValid('delete'.$room->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($room);
@@ -107,5 +110,7 @@ class RoomController extends AbstractController
 
         return $this->redirectToRoute('room_index');
     }
+
+
 
 }
