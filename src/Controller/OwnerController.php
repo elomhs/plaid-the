@@ -41,7 +41,7 @@ class OwnerController extends AbstractController
             $entityManager->persist($owner);
             $entityManager->flush();
 
-            return $this->redirectToRoute('owner_index');
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('owner/new.html.twig', [

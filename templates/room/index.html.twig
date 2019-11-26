@@ -41,7 +41,7 @@
 								<div style="width: 400px">
 									{% if is_granted('ROLE_OWNER') or is_granted('ROLE_DOUBLE') or is_granted('ROLE_SUPER_ADMIN') %}
 									<a href="{{ path('room_new') }}">
-										<button class="btn">New</button>
+										<button class="btn" style="color:white">New</button>
 									</a>
 									{% endif %}
 									{% for room in rooms %}
