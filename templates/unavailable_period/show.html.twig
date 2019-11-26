@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}UnavailablePeriod{% endblock %}
+
+{% block body %}
+    <h1>UnavailablePeriod</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ unavailable_period.id }}</td>
+            </tr>
+            <tr>
+                <th>DateDebut</th>
+                <td>{{ unavailable_period.dateDebut }}</td>
+            </tr>
+            <tr>
+                <th>DateFin</th>
+                <td>{{ unavailable_period.dateFin }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('unavailable_period_index') }}">back to list</a>
+
+    <a href="{{ path('unavailable_period_edit', {'id': unavailable_period.id}) }}">edit</a>
+
+    {{ include('unavailable_period/_delete_form.html.twig') }}
+{% endblock %}
