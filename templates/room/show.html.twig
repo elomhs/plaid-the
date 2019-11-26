@@ -43,7 +43,10 @@
 
         </tbody>
     </table>
-
+    {% if is_granted('ROLE_CLIENT') or is_granted('ROLE_DOUBLE') or is_granted('ROLE_SUPER_ADMIN') %}
+        <button>Réserver</button>
+    {% endif %}
+    <br>
     <a href="{{ path('room_index') }}">back to list</a>
 
     {% if is_granted('ROLE_OWNER') or is_granted('ROLE_SUPER_ADMIN') %}

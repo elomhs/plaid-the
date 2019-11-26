@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Inscription{% endblock %}
 
 {% block body %}
     <h1>Register</h1>
@@ -8,8 +8,12 @@
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.username) }}
         {{ form_row(registrationForm.plainPassword) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        <br>
+        <button class="btn" style="background-color: #9fcdff" >Client</button>
 
-        <button class="btn">Register</button>
+        <button class="btn" style="background-color: #9fcdff" >Loueur</button>
+        <br>
+        <br>
+        <button class="btn" style="background-color: #9fcdff">S'enregistrer</button>
     {{ form_end(registrationForm) }}
 {% endblock %}
