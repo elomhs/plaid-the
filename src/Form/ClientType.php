@@ -2,29 +2,24 @@
 
 namespace App\Form;
 
-use App\Entity\Room;
+use App\Entity\Client;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RoomType extends AbstractType
+class ClientType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('summary')
-            ->add('description')
-            ->add('capacity')
-            ->add('superficy')
-            ->add('price')
-            ->add('address')
-        ;
+            ->add('name');
+
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Room::class,
+            'data_class' => Client::class,
         ]);
     }
 }

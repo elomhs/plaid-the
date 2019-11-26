@@ -10,7 +10,7 @@
 				<!-- Header -->
 					<br>
 					<header id="header">
-						<h1 style="font-size: 50px"> Bienvenue chez <h1 class="font-weight-bold">Plaid & Thé </h1></h1>
+						<h1 style="font-size: 50px"> Bienvenue chez <h1 class="font-weight-bold" >Plaid & Thé </h1></h1>
 					</header>
 
 				<!-- Main -->
@@ -32,8 +32,27 @@
 										<br>
 										<h1>Jetez un oeil à nos chambres disponibles</h1>
 									</a>
-
 								</div>
+							</section>
+						{% if is_granted('ROLE_USER') %}
+						<section class="thumbnails " >
+								<br>
+								<div style="width: 200px">
+									<a href="{{ path('client_new' )}}">
+										<br>
+										<h1>Devenez client</h1>
+									</a>
+								</div>
+								<div style="width: 200px" >
+									<a href="{{ path('owner_new' )}}">
+										<br>
+										<h1>Devenez loueur</h1>
+									</a>
+								</div>
+
+
+						</section>
+						{% endif %}
 
 							</section>
 
@@ -42,7 +61,7 @@
 
 				<!-- Footer -->
 					<footer id="footer">
-						<p>&copy; Untitled. All rights reserved. Design: <a href="http://templated.co">TEMPLATED</a>. Demo Images: <a href="http://unsplash.com">Unsplash</a>.</p>
+						<p>&copy; Plaid&Thé. All rights reserved. Design: <a href="http://templated.co">TEMPLATED</a>. </p>
 					</footer>
 
 
