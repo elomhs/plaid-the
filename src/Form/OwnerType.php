@@ -23,6 +23,7 @@ class OwnerType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Owner::class,
+            'roles'=>'ROLE_OWNER',
         ]);
     }
 }

@@ -12,6 +12,8 @@ security:
                 property: username
 
     role_hierarchy:
+        ROLE_CLIENT:    ROLE_USER
+        ROLE_OWNER:    ROLE_USER
         ROLE_DOUBLE:       [ROLE_CLIENT, ROLE_OWNER]
         ROLE_SUPER_ADMIN: ROLE_ADMIN
 
@@ -40,3 +42,5 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - {path: ^/client$, roles: ROLE_SUPER_ADMIN}
+        - {path: ^/owner$, roles: ROLE_SUPER_ADMIN}

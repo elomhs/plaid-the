@@ -30,12 +30,14 @@ class OwnerController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        $user = $this->getUser();
         $owner = new Owner();
         $form = $this->createForm(OwnerType::class, $owner);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $user->addRole("ROLE_OWNER");
             $entityManager->persist($owner);
             $entityManager->flush();
 

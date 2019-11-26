@@ -36,6 +36,11 @@ class Client
      */
     private $role;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="client", cascade={"persist", "remove"})
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -91,5 +96,17 @@ class Client
     public function __toString()
     {
         return (string)$this->getId();
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
     }
 }

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Client;
 use App\Form\ClientType;
 use App\Repository\ClientRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,6 +18,7 @@ class ClientController extends AbstractController
 {
     /**
      * @Route("/", name="client_index", methods={"GET"})
+     * @Security("is_granted('ROLE_SUPER_ADMIN')")
      */
     public function index(ClientRepository $clientRepository): Response
     {
@@ -30,16 +32,19 @@ class ClientController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        $user = $this->getUser();
         $client = new Client();
+        $client->setUser($user);
         $form = $this->createForm(ClientType::class, $client);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $user->addRole("ROLE_CLIENT");
             $entityManager->persist($client);
             $entityManager->flush();
 
-            return $this->redirectToRoute('client_index');
+            return $this->redirectToRoute('accueil');
         }
 
         return $this->render('client/new.html.twig', [

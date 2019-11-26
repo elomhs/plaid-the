@@ -40,6 +40,16 @@ class User implements UserInterface
      */
     private $roleOwner;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Client", mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $client;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Owner", mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $owner;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -142,5 +152,41 @@ class User implements UserInterface
     public function __toString()
     {
         return (string)$this->getId();
+    }
+
+    public function getClient(): ?Client
+    {
+        return $this->client;
+    }
+
+    public function setClient(?Client $client): self
+    {
+        $this->client = $client;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newUser = $client === null ? null : $this;
+        if ($newUser !== $client->getUser()) {
+            $client->setUser($newUser);
+        }
+
+        return $this;
+    }
+
+    public function getOwner(): ?Owner
+    {
+        return $this->owner;
+    }
+
+    public function setOwner(?Owner $owner): self
+    {
+        $this->owner = $owner;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newUser = $owner === null ? null : $this;
+        if ($newUser !== $owner->getUser()) {
+            $owner->setUser($newUser);
+        }
+
+        return $this;
     }
 }
