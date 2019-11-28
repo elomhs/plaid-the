@@ -2,8 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Region;
 use App\Entity\Room;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -18,6 +21,14 @@ class RoomType extends AbstractType
             ->add('superficy')
             ->add('price')
             ->add('address')
+            ->add("regions", EntityType::class, array(
+               "class" => Region::class,
+                "choice_label" => function($region, $key, $index) {
+                   return $region->getName();
+                },
+                "multiple" => true,
+                "expanded" => true,
+            ));
         ;
     }
 

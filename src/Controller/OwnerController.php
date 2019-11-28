@@ -37,6 +37,7 @@ class OwnerController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $user->setOwner($owner);
             $user->addRole("ROLE_OWNER");
             $entityManager->persist($owner);
             $entityManager->flush();

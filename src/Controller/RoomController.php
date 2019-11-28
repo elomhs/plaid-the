@@ -51,8 +51,11 @@ class RoomController extends AbstractController
     {
         $room = new Room();
         $form = $this->createForm(RoomType::class, $room);
-        $form->handleRequest($request);
+        $user=$this->getUser();
+        $owner=$user->getOwner();
+        $room->setOwner($owner);
 
+        $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($room);

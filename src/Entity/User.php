@@ -36,11 +36,6 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Owner", mappedBy="role", cascade={"persist", "remove"})
-     */
-    private $roleOwner;
-
-    /**
      * @ORM\OneToOne(targetEntity="App\Entity\Client", mappedBy="user", cascade={"persist", "remove"})
      */
     private $client;
@@ -132,23 +127,6 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
-    public function getRoleOwner(): ?Owner
-    {
-        return $this->roleOwner;
-    }
-
-    public function setRoleOwner(?Owner $roleOwner): self
-    {
-        $this->roleOwner = $roleOwner;
-
-        // set (or unset) the owning side of the relation if necessary
-        $newRole = $roleOwner === null ? null : $this;
-        if ($newRole !== $roleOwner->getRole()) {
-            $roleOwner->setRole($newRole);
-        }
-
-        return $this;
-    }
     public function __toString()
     {
         return (string)$this->getId();

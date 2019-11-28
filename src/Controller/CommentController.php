@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Comment;
+use App\Entity\Room;
 use App\Form\CommentType;
 use App\Repository\CommentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,21 +17,24 @@ use Symfony\Component\Routing\Annotation\Route;
 class CommentController extends AbstractController
 {
     /**
-     * @Route("/", name="comment_index", methods={"GET"})
+     * @Route("/{id}", name="comment_index", methods={"GET"}, requirements={"id": "\d+"})
      */
-    public function index(CommentRepository $commentRepository): Response
+    public function index(CommentRepository $commentRepository, Room $room): Response
     {
+
         return $this->render('comment/index.html.twig', [
-            'comments' => $commentRepository->findAll(),
+            'comments' => $commentRepository->findByRoom($room),
+            "room" => $room
         ]);
     }
 
     /**
-     * @Route("/new", name="comment_new", methods={"GET","POST"})
+     * @Route("/new/{id}", requirements={"id": "\d+"}, name="comment_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, Room $room): Response
     {
         $comment = new Comment();
+        $comment->setRoom($room);
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 
@@ -39,7 +43,7 @@ class CommentController extends AbstractController
             $entityManager->persist($comment);
             $entityManager->flush();
 
-            return $this->redirectToRoute('comment_index');
+            return $this->redirectToRoute('room_index');
         }
 
         return $this->render('comment/new.html.twig', [
@@ -65,6 +69,7 @@ class CommentController extends AbstractController
     {
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
+
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
