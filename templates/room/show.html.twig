@@ -44,7 +44,7 @@
         </tbody>
     </table>
     {% if is_granted('ROLE_CLIENT') or is_granted('ROLE_DOUBLE') or is_granted('ROLE_SUPER_ADMIN') %}
-        <a href="{{ path('reservation_new') }}">
+        <a href="{{ path('reservation_new', {'id':room.id}) }}">
             <button class="btn" style="color:white">Réserver</button>
         </a>
 

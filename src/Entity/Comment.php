@@ -26,6 +26,11 @@ class Comment
      */
     private $client;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Room", inversedBy="comments")
+     */
+    private $room;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,6 +56,18 @@ class Comment
     public function setClient(?string $client): self
     {
         $this->client = $client;
+
+        return $this;
+    }
+
+    public function getRoom(): ?Room
+    {
+        return $this->room;
+    }
+
+    public function setRoom(?Room $room): self
+    {
+        $this->room = $room;
 
         return $this;
     }

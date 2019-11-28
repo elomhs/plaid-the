@@ -20,8 +20,8 @@
         {% for reservation in reservations %}
             <tr>
                 <td>{{ reservation.id }}</td>
-                <td>{{ reservation.dateDebut }}</td>
-                <td>{{ reservation.dateFin }}</td>
+                <td>{{ reservation.dateDebut|date('d/m/Y') }}</td>
+                <td>{{ reservation.dateFin |date('d/m/Y')}}</td>
                 <td>{{ reservation.owner }}</td>
                 <td>{{ reservation.client }}</td>
                 <td>
@@ -37,5 +37,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('reservation_new') }}">Create new</a>
+{#    <a href="{{ path('reservation_new') }}">Create new</a>#}
 {% endblock %}

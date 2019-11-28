@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Reservation;
+use App\Entity\Room;
 use App\Form\ReservationType;
 use App\Repository\ReservationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,19 +27,38 @@ class ReservationController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="reservation_new", methods={"GET","POST"})
+     * @Route("/new/{id}",requirements={"id":"\d+"}, name="reservation_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, Room $room): Response
     {
         $reservation = new Reservation();
         $form = $this->createForm(ReservationType::class, $reservation);
         $form->handleRequest($request);
+        $reservation->setReservation($room);
+
+
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $reservation = $form->getData();
             $entityManager = $this->getDoctrine()->getManager();
+            $reservations = $entityManager->getRepository(Reservation::class);
+            $conflit = $reservations->createQueryBuilder("r")
+            ->where("r.reservation = :room AND NOT (:dateDebut < r.dateDebut OR :dateDebut > r.dateFin OR r.dateFin < :dateDebut OR r.dateDebut > :dateFin)")
+            ->setParameter("dateDebut", $reservation->getDateDebut())
+            ->setParameter("dateFin", $reservation->getDateFin())
+            ->setParameter("room", $room)
+                ->getQuery()->getResult();
+
+
+            if(count($conflit) > 0) {
+            $this->addFlash("error","Une réservation est impossible sur cette période");
+            return $this->redirectToRoute('room_index');
+
+            }
+
             $entityManager->persist($reservation);
             $entityManager->flush();
-
+            $this->addFlash("success","ok!");
             return $this->redirectToRoute('reservation_index');
         }
 

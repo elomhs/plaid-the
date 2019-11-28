@@ -40,6 +40,7 @@ class ClientController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
             $user->addRole("ROLE_CLIENT");
             $entityManager->persist($client);
             $entityManager->flush();

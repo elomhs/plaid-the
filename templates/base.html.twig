@@ -45,7 +45,22 @@
         </nav>
         <!-- Fin de la barre de menu-->
     {% endblock %} {# menu #}
-        {% block body %}
+
+    <div id="flashContainer" class="body-margins">
+        <br>
+        <br>
+        <br>
+        {# read and display several types of flash messages #}
+        {% for label, messages in app.flashes(['success', 'warning', 'error']) %}
+            {% for message in messages %}
+                <div class="flash-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+
+    {% block body %}
 
 
     {% block main %}MAIN{% endblock %} {# main #}
