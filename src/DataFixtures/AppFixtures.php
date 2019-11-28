@@ -85,7 +85,7 @@ class AppFixtures extends Fixture
         $room->setPrice(2);
         $room->setSuperficy(2);
         $room->setAddress(2);
-        $room->setImage("evry.jpg");
+        $room->setImageName("evry.jpg");
         $manager->persist($room);
 
         $room = new Room();
@@ -97,7 +97,7 @@ class AppFixtures extends Fixture
         $room->setPrice(25);
         $room->setSuperficy(20);
         $room->setAddress("6 rue Charles Fourier");
-        $room->setImage("evry2.jpg");
+        $room->setImageName("evry2.jpg");
         $manager->persist($room);
 
         $room = new Room();
@@ -109,7 +109,7 @@ class AppFixtures extends Fixture
         $room->setPrice(1000);
         $room->setSuperficy(200);
         $room->setAddress("1 rue des cigales");
-        $room->setImage("provence.jpg");
+        $room->setImageName("provence.jpg");
         $manager->persist($room);
 
         $room = new Room();
@@ -121,7 +121,7 @@ class AppFixtures extends Fixture
         $room->setPrice(50);
         $room->setSuperficy(100);
         $room->setAddress("au bout du chemin");
-        $room->setImage("bretagne.jpg");
+        $room->setImageName("bretagne.jpg");
         $manager->persist($room);
 
         $room = new Room();
@@ -133,7 +133,7 @@ class AppFixtures extends Fixture
         $room->setPrice(200);
         $room->setSuperficy(200);
         $room->setAddress("2 rue des colombages");
-        $room->setImage("alsace.jpg");
+        $room->setImageName("alsace.jpg");
         $manager->persist($room);
 
         $room = new Room();
@@ -145,20 +145,9 @@ class AppFixtures extends Fixture
         $room->setPrice(2000);
         $room->setSuperficy(1000);
         $room->setAddress("1 chemin des paturages");
-        $room->setImage("corse.jpg");
+        $room->setImageName("corse.jpg");
         $manager->persist($room);
 
-        $room = new Room();
-        $room->setSummary("Villa au plein coeur des montagnes");
-        $room->setDescription("La vue est dégagée");
-        $room->addRegion($region2);
-        $room->setOwner($owner);
-        $room->setCapacity(10);
-        $room->setPrice(2000);
-        $room->setSuperficy(1000);
-        $room->setAddress("1 chemin des paturages");
-        $room->setImage("corse.jpg");
-        $manager->persist($room);
 
 
         // On peut plutôt faire une référence explicite à la référence

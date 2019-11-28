@@ -20,7 +20,8 @@
 									<a href="{{ path('room_show', {id:room.id}) }}">
 										<br>
 										<h1>{{ room.summary }}</h1>
-										<img src="{{ asset('images/thumbs/'~room.image) }}" alt="" />
+										<img src="{{ vich_uploader_asset(room, 'imageFile') }}"/>
+{#										<img src="{{ asset('images/thumbs/'~room.image) }}" alt="" />#}
 										<h3>{{ room.description }}</h3>
 									</a>
 									{% endfor %}

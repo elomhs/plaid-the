@@ -8,6 +8,10 @@
     <table class="table">
         <tbody>
             <tr>
+                <th>Image</th>
+                <td><img src="{{ vich_uploader_asset(room, 'imageFile') }}"/></td>
+            </tr>
+            <tr>
                 <th>Summary</th>
                 <td>{{ room.summary }}</td>
             </tr>
@@ -32,7 +36,7 @@
                 <td>{{ room.address }}</td>
             </tr>
             <tr>
-                <img src="{{ asset('images/thumbs/'~room.image) }}" alt="" width="400"/>
+{#                <img src="{{ asset('images/thumbs/'~room.image) }}" alt="" width="400"/>#}
             </tr>
             <tr>
                 <th>Région</th>
