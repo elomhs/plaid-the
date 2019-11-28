@@ -58,7 +58,7 @@ class ReservationController extends AbstractController
 
             $entityManager->persist($reservation);
             $entityManager->flush();
-            $this->addFlash("success","ok!");
+            $this->addFlash("success","Votre réservation est validée!");
             return $this->redirectToRoute('reservation_index');
         }
 

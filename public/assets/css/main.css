@@ -2,6 +2,21 @@
 @import url(font-awesome.min.css);
 @import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro:200");
 
+.flash-error {
+	color: #ff5344;
+	font-size: xx-large;
+	font-family: "Courier New", monospace;
+}
+
+.flash-warning {
+	color: yellow;
+}
+
+.flash-success {
+	color: #2f801e;
+	font-size: xx-large;
+	font-family: "Courier New", monospace;
+}
 /*
 	Visualize by TEMPLATED
 	templated.co @templatedco
