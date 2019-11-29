@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Reservation;
 use App\Entity\Room;
+use App\Entity\User;
 use App\Form\ReservationType;
 use App\Repository\ReservationRepository;
+use phpDocumentor\Reflection\Types\This;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,13 +19,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class ReservationController extends AbstractController
 {
     /**
-     * @Route("/", name="reservation_index", methods={"GET"})
+     * @Route("/", name="reservation_index", methods={"GET"} )
      */
     public function index(ReservationRepository $reservationRepository): Response
     {
-        return $this->render('reservation/index.html.twig', [
-            'reservations' => $reservationRepository->findAll(),
-        ]);
+//        return $this->render('reservation/index.html.twig', [
+//            'reservations' => $reservationRepository->findAll(),
+//        ]);
+        return $this->redirectToRoute('room_index');
     }
 
     /**
