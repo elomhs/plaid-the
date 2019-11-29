@@ -5,6 +5,13 @@
 {% block body %}
     <h1>Room</h1>
 
+    <div style="width: 400px">
+        <a href="{{ path('reservation_show', {id:room.id}) }}">
+            <button class="btn" style="color:white">Voir les indisponibilités de la chambre</button>
+        </a>
+    </div>
+    <br>
+
     <table class="table">
         <tbody>
             <tr>

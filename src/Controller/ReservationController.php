@@ -19,14 +19,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class ReservationController extends AbstractController
 {
     /**
-     * @Route("/", name="reservation_index", methods={"GET"} )
+     * @Route("/{id}", name="reservation_index", methods={"GET"} , requirements={"id": "\d+"})
      */
-    public function index(ReservationRepository $reservationRepository): Response
+    public function index(ReservationRepository $reservationRepository, Room $reservation): Response
     {
-//        return $this->render('reservation/index.html.twig', [
-//            'reservations' => $reservationRepository->findAll(),
-//        ]);
-        return $this->redirectToRoute('room_index');
+        return $this->render('reservation/index.html.twig', [
+            'reservations' => $reservationRepository->findByReservation($reservation),
+            "reservation" => $reservation,
+        ]);
+//        return $this->redirectToRoute('room_index');
     }
 
     /**
