@@ -92,13 +92,21 @@ class RoomController extends AbstractController
     {
         $form = $this->createForm(RoomType::class, $room);
         $form->handleRequest($request);
+        $user=$this->getUser();
+        $ownerRoom=$user->getOwner();
+        $owner=$room->getOwner();
+        if($ownerRoom->getId() == $owner->getId() ) {
+            $this->addFlash("success", "Vous pouvez procéder aux changements");
+            if ($form->isSubmitted() && $form->isValid()) {
+                $this->getDoctrine()->getManager()->flush();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
+                return $this->redirectToRoute('room_index');
+            }
+        }
+        else{
+            $this->addFlash("error", "Cette chambre ne vous appartient pas, vous ne pouvez pas l'éditer");
             return $this->redirectToRoute('room_index');
         }
-
         return $this->render('room/edit.html.twig', [
             'room' => $room,
             'form' => $form->createView(),
