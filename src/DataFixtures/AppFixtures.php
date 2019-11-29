@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Comment;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\Region;
@@ -157,7 +158,7 @@ class AppFixtures extends Fixture
         $manager->persist($room);
         
         $manager->flush();
-        
+
         //...
     }
     
