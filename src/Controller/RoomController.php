@@ -109,13 +109,20 @@ class RoomController extends AbstractController
      */
     public function delete(Request $request, Room $room): Response
     {
-
-        if ($this->isCsrfTokenValid('delete'.$room->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($room);
-            $entityManager->flush();
+        $user=$this->getUser();
+        $ownerRoom=$user->getOwner();
+        $owner=$room->getOwner();
+        if($ownerRoom->getId() == $owner->getId() ) {
+            if ($this->isCsrfTokenValid('delete' . $room->getId(), $request->request->get('_token'))) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->remove($room);
+                $entityManager->flush();
+            }
+            $this->addFlash("success", "Votre chambre a bien été supprimée");
         }
-
+        else {
+            $this->addFlash("error", "Cette chambre ne vous appartient pas, vous ne pouvez pas la supprimer");
+        }
         return $this->redirectToRoute('room_index');
     }
 
