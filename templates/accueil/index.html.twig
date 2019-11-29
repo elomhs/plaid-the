@@ -34,25 +34,28 @@
 									</a>
 								</div>
 							</section>
-						{% if is_granted('ROLE_USER') %}
+
 						<section class="thumbnails " >
 								<br>
+							{% if is_granted('ROLE_USER') or is_granted('ROLE_OWNER')%}
 								<div style="width: 200px">
 									<a href="{{ path('client_new' )}}">
 										<br>
 										<h1>Devenez client</h1>
 									</a>
 								</div>
+							{% endif %}
+							{% if is_granted('ROLE_USER') or is_granted('ROLE_CLIENT')%}
 								<div style="width: 200px" >
 									<a href="{{ path('owner_new' )}}">
 										<br>
 										<h1>Devenez loueur</h1>
 									</a>
 								</div>
-
+							{% endif %}
 
 						</section>
-						{% endif %}
+
 
 							</section>
 

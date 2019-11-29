@@ -1444,7 +1444,7 @@
 /* Type */
 
 	body, input, select, textarea {
-		color: rgba(255, 255, 255, 0.65);
+		color: rgba(0, 0, 0, 0.65);
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
 		font-size: 13pt;
 		font-weight: 200;
@@ -1656,7 +1656,7 @@
 	}
 
 	label {
-		color: #ffffff;
+		color: #fefefe;
 		display: block;
 		font-size: 0.9em;
 		font-weight: 200;
